@@ -9,14 +9,26 @@ class MainWindow(QMainWindow):
     """Subclass the QMainWindow to customize your application's main window"""
     def __init__(self):
         super().__init__()
+
+        self.button_is_checked = True
+
         self.setWindowTitle("My Application")
         button = QPushButton("Click me!")
+        button.setCheckable(True)
+        button.clicked.connect(self.the_button_was_clicked)
+        button.clicked.connect(self.the_button_was_toggled)
         # self.setFixedSize(QSize(400, 300))
-        self.setMinimumSize(QSize(400, 300))
-        self.setMaximumSize(QSize(1000, 1000))
+        # self.setMinimumSize(QSize(400, 300))
+        # self.setMaximumSize(QSize(1000, 1000))
 
         # Set the central widget of the window
         self.setCentralWidget(button)
+
+    def the_button_was_clicked(self):
+        print("Clicked!")
+
+    def the_button_was_toggled(self, checked):
+        print("Checked?", checked)
 
 
 # You need one (and only one) QApplication instance per application.
