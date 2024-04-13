@@ -15,8 +15,13 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("My Application")
         self.button = QPushButton("Click me!")
         self.button.setCheckable(True)
-        self.button.clicked.connect(self.the_button_was_clicked)
-        self.button.clicked.connect(self.the_button_was_toggled)
+        # self.button.clicked.connect(self.the_button_was_clicked)
+        # self.button.clicked.connect(self.the_button_was_toggled)
+
+        self.button.released.connect(self.the_button_was_released)
+
+        # Set the initial state of whether the button is checked based on what we configured in self.button_is_checked
+        self.button.setChecked(self.button_is_checked)
         # self.setFixedSize(QSize(400, 300))
         # self.setMinimumSize(QSize(400, 300))
         # self.setMaximumSize(QSize(1000, 1000))
@@ -31,6 +36,11 @@ class MainWindow(QMainWindow):
         self.button_is_checked = checked
         print("Checked?", self.button_is_checked)
 
+    def the_button_was_released(self):
+        # Here, the signal isn't sent by the release event, so we need to check the .isChecked() and set the
+        # state on our self.button_is_checked attribute manually
+        self.button_is_checked = self.button.isChecked()
+        print("Checked?", self.button_is_checked)
 
 # You need one (and only one) QApplication instance per application.
 # Pass in sys.argv to allow command line arguments for your app.
