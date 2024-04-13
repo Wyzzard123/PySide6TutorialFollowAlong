@@ -28,7 +28,8 @@ class MainWindow(QMainWindow):
         print("Clicked!")
 
     def the_button_was_toggled(self, checked):
-        print("Checked?", checked)
+        self.button_is_checked = checked
+        print("Checked?", self.button_is_checked)
 
 
 # You need one (and only one) QApplication instance per application.
