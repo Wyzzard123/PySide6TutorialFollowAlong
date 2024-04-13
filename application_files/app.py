@@ -14,15 +14,15 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("My Application")
         self.button = QPushButton("Click me!")
-        self.button.setCheckable(True)
-        # self.button.clicked.connect(self.the_button_was_clicked)
+        # self.button.setCheckable(True)
+        self.button.clicked.connect(self.the_button_was_clicked)
         # self.button.clicked.connect(self.the_button_was_toggled)
 
-        self.button.released.connect(self.the_button_was_released)
+        # self.button.released.connect(self.the_button_was_released)
 
         # Set the initial state of whether the button is checked based on what we configured in self.button_is_checked
-        self.button.setChecked(self.button_is_checked)
-        # self.setFixedSize(QSize(400, 300))
+        # self.button.setChecked(self.button_is_checked)
+        self.setFixedSize(QSize(400, 300))
         # self.setMinimumSize(QSize(400, 300))
         # self.setMaximumSize(QSize(1000, 1000))
 
@@ -30,7 +30,11 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.button)
 
     def the_button_was_clicked(self):
-        print("Clicked!")
+        self.button.setText("You already clicked me!")
+        self.button.setEnabled(False)
+
+        self.setWindowTitle("Your Application is dead now")
+        # print("Clicked!")
 
     def the_button_was_toggled(self, checked):
         self.button_is_checked = checked
