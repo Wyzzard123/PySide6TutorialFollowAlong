@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QWidget
+from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow
 
 # Only needed for access to command line arguments
 import sys
@@ -8,8 +8,9 @@ import sys
 # If you know you won't use command line arguments QApplication([]) works too.
 app = QApplication(sys.argv)
 
-# Create a Qt widget, which will be our window
-window = QWidget()
+# Create a Qt Main Window
+window = QMainWindow()
+
 # Windows are hidden by default - so you must use this to show the window
 window.show()
 
