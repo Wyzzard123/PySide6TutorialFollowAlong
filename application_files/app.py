@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow
+from PySide6.QtCore import QSize, Qt
 
 # Only needed for access to command line arguments
 import sys
@@ -10,6 +11,9 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("My Application")
         button = QPushButton("Click me!")
+        # self.setFixedSize(QSize(400, 300))
+        self.setMinimumSize(QSize(400, 300))
+        self.setMaximumSize(QSize(1000, 1000))
 
         # Set the central widget of the window
         self.setCentralWidget(button)
