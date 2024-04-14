@@ -1,5 +1,6 @@
 import sys
 
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import  QApplication, QLabel, QMainWindow
 
 
@@ -18,16 +19,39 @@ class MainWindow(QMainWindow):
         self.label.setMouseTracking(True)
 
     def mouseMoveEvent(self, event):
-        self.label.setText("Mouse moved")
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.label.setText("Mouse left moved")
+        elif event.button() == Qt.MouseButton.MiddleButton:
+            self.label.setText("Mouse middle moved")
+        elif event.button() == Qt.MouseButton.RightButton:
+            self.label.setText("Mouse right moved")
+        else:
+            self.label.setText("Mouse moved")
 
     def mousePressEvent(self, event):
-        self.label.setText("Mouse pressed")
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.label.setText("Mouse left pressed")
+        elif event.button() == Qt.MouseButton.MiddleButton:
+            self.label.setText("Mouse middle pressed")
+        elif event.button() == Qt.MouseButton.RightButton:
+            self.label.setText("Mouse right pressed")
 
     def mouseReleaseEvent(self, event):
-        self.label.setText("Mouse released")
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.label.setText("Mouse left released")
+        elif event.button() == Qt.MouseButton.MiddleButton:
+            self.label.setText("Mouse middle released")
+        elif event.button() == Qt.MouseButton.RightButton:
+            self.label.setText("Mouse right released")
 
     def mouseDoubleClickEvent(self, event):
-        self.label.setText("Mouse double clicked")
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.label.setText("Mouse left double clicked")
+        elif event.button() == Qt.MouseButton.MiddleButton:
+            self.label.setText("Mouse middle double clicked")
+        elif event.button() == Qt.MouseButton.RightButton:
+            self.label.setText("Mouse right double clicked")
+
 
 
 app = QApplication(sys.argv)
